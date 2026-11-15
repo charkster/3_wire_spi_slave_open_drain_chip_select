@@ -7,7 +7,9 @@ By allowing the SPI chip select to be bidirectional, interrupt notifications can
 
 While an I2C bus with a single shared open drain interrupt allows for a very low pin-count system, a 3 wire SPI with a dedicated interrupt is a much higher performance alternative. The interrupt being shared with the chip select allows for the controller to immediately know which slave has the interrupt. The higher clock speed of the 3 wire SPI allows for at least a 10x faster data transfer.
 
-I3C and SPMI are an excellent balance of low pin-count and fast data transfer, but good luck finding an MCU that supports either of them. The ubiquity and flexibility of SPI allows for 3 wire open drain chip select to be used in literally every MCU system.  
+I3C and SPMI are an excellent balance of low pin-count and fast data transfer, but good luck finding an MCU that supports either of them. The ubiquity and flexibility of SPI allows for 3 wire open drain chip select to be used in literally every MCU system.
+
+Controller has 4 wire SPI master and FPGA has 3 wire SPI slave (with interrupt signalling).
 
 ![picture](https://github.com/charkster/3_wire_spi_slave_open_drain_chip_select/blob/main/images/3_wire_spi_open_drain_diagram.png)
 
