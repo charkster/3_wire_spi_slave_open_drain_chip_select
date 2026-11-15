@@ -1,7 +1,7 @@
 # 3_wire_spi_slave_open_drain_chip_select
 Demonstration of 3 Wire SPI slave with an open drain chip select that allows interrupt notifications to the controller.
 
-**"Just add 2 resistors!"**
+**"Just add 2 resistors!"** (for this demo both are 1K Ohm)
 
 By allowing the SPI chip select to be bidirectional, interrupt notifications can be done while when the CS wire is inactive-high. A low pulse on the CS wire indicates that the slave has an interrupt condition. I suspected that it would be trivial for a controller's CS pin (most times implemented as a simple GPIO pin) to be configured with an open drain and the rising edge triggers a callback routine. The included MicroPython code demonstrates this.
 
