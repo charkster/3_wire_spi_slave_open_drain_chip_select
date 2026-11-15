@@ -110,7 +110,7 @@ module spi_3wire_slave_cs_open_drain_top
      
    always_ff @(posedge clk, negedge rst_n_sync)
      if (~rst_n_sync)                                       timer <= 'd0;
-  else if (start_timer_sync && (!hold_start_timer_sync)) timer <= registers << 22; // rising edge initialize, 255 << 22 * 10E-9s = 10.7s, each count is 41ms
+     else if (start_timer_sync && (!hold_start_timer_sync)) timer <= registers << 22; // rising edge initialize, 255 << 22 * 10E-9s = 10.7s, each count is 41ms
      else if (timer > 0)                                    timer <= timer -'d1;      // decrement until zero
    
    always_ff @(posedge clk, negedge rst_n_sync)
