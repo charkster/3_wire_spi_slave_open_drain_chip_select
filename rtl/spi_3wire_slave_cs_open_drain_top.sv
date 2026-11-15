@@ -92,7 +92,7 @@ module spi_3wire_slave_cs_open_drain_top
      else                           sdata_out <= 1'b0;
    
 
-   
+   // address 1 is not read-able as it just serves as a trigger to start the timer
    always_ff @(posedge sclk, negedge rst_n_spi)
      if (~rst_n_spi)                          start_timer <= 1'b0;
      else if ((addr == 1) && (!rnw) && sdata) start_timer <= 1'b1;
