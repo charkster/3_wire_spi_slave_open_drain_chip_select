@@ -31,12 +31,12 @@ spi.write_readinto(bytearray([0x01, 0x01]),read_buffer_2)
 spi_cs.value(1)
 
 def callback(pin):
-    spi_cs.irq(trigger=0, handler=None)
+    spi_cs.irq(trigger=0, handler=None) # disable IRQ
     if (spi_cs.value() == 1):
         print("Write to Address 0x00 Data 0x01, 41ms until SPI_CS interrupt")
         spi_cs.value(0)
-        spi.write_readinto(bytearray([0x01, 0x01]),read_buffer_2)
+        spi.write_readinto(bytearray([0x01, 0x01]),read_buffer_2) # address 1, data 1 enables FPGA IRQ timer
         spi_cs.value(1)
-        spi_cs.irq(trigger=machine.Pin.IRQ_RISING, handler=callback)
+        spi_cs.irq(trigger=machine.Pin.IRQ_RISING, handler=callback) # enable IRQ
 
 callback(1)
